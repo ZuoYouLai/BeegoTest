@@ -1,5 +1,10 @@
 ## BeeGo 学习
 
+### 项目的引入
+```text
+go get github.com/smartystreets/goconvey/convey
+```
+
 ### ORM 操作
 + 参考文章 : https://www.jianshu.com/p/4441b8b765ac
 + 官方文档 : https://beego.me/docs/mvc/model/overview.md 

@@ -1,26 +1,24 @@
 package main
 
 import (
-	"fmt"
 	"github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql"
-	"strconv"
 	"time"
 )
 
 type GoUser struct {
-	Id          int
-	Title       string
-	Name        string
-	Age 		int
-	Content     string
-	CreatedAt   time.Time
-	UpdatedAt   time.Time
+	Id        int
+	Title     string
+	Name      string
+	Age       int
+	Content   string
+	CreatedAt time.Time
+	UpdatedAt time.Time
 }
 
 var O orm.Ormer
 
-func init()  {
+func init() {
 	// 需要在init中注册定义的model
 	orm.RegisterModel(new(GoUser))
 
@@ -36,29 +34,10 @@ func init()  {
 	orm.DefaultTimeLoc = time.UTC
 
 	O = orm.NewOrm()
-	orm.Debug= true
+	orm.Debug = true
 
 }
 
-
-
-func main()  {
-
-	O.Using("default") // 默认使用 default，你可以指定为其他数据库
-	user:= GoUser{Age: 28, Content: "赖豪达个人简介", CreatedAt: time.Now(), UpdatedAt: time.Now()}
-	for i := 0; i < 10; i++ {
-		num:=strconv.Itoa(i)
-		user.Name = "samlai  - "+ num
-		user.Title = "title - "+ num
-		fmt.Println(user)
-		id,err := O.Insert(&user)
-		if err == nil {
-			fmt.Printf("insert data id  =  %d ", id)
-			user.Id= 0
-			fmt.Println("\n")
-		}
-
-	}
-
+func main() {
 
 }
